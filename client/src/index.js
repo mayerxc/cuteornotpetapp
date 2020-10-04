@@ -6,7 +6,7 @@ import { unregister } from "./registerServiceWorker";
 import Profile from './Components/Profile';
 import Rankings from './Components/Rankings'
 //Added below for redux store
-import {applyMiddleware, createStore} from 'redux';
+import {applyMiddleware, createStore, compose} from 'redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux'
@@ -19,9 +19,10 @@ import Main from './Components/main' //wrapper to pass authentication info downs
 import reducers from './reducers/index'
 
 //use logger for debugging only
-const middleware = applyMiddleware(thunk,logger)
+const middleware = applyMiddleware(thunk,logger, )
 //const middleware = applyMiddleware(thunk)
-export const store = createStore(reducers,middleware)
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+export const store = createStore(reducers, composeEnhancers(middleware));
 
 
 //decalre all routes of application below
