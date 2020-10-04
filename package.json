@@ -4,8 +4,10 @@
   "description": "backend",
   "scripts": {
     "client": "cd client && yarn start",
+    "client2": "cd client && npm run start",
     "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "dev2": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client2\"",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "dependencies": {
@@ -17,7 +19,7 @@
     "express": "^4.16.2",
     "mongoose": "^5.0.7",
     "passport": "^0.4.0",
-    "passport-google-oauth": "^1.0.0",
+    "passport-google-oauth": "^2.0.0",
     "passport-twitter": "^1.0.4",
     "path": "^0.12.7"
   },
